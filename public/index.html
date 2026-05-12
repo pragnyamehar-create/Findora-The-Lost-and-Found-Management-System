@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found - Locate your missing items</title>
+    <meta name="description" content="A premium lost and found management system to easily report and locate missing items.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="navbar glass">
+        <div class="nav-brand">
+            <i class="fa-solid fa-magnifying-glass-location"></i>
+            <span>Lost&Found</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" data-route="home" class="active">Home</a>
+            <a href="#" data-route="items">Browse Items</a>
+            <a href="#" data-route="post" id="navPost" style="display: none;">Post Item</a>
+            <a href="#" data-route="dashboard" id="navDashboard" style="display: none;">Dashboard</a>
+            <a href="#" data-route="login" id="navLogin" class="btn btn-outline">Login</a>
+            <a href="#" id="navLogout" class="btn btn-outline" style="display: none;">Logout</a>
+        </div>
+    </nav>
+
+    <main id="app-container" class="container">
+        <!-- Dynamic content will be injected here -->
+    </main>
+
+    <div id="toast-container"></div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
