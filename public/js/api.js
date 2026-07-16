@@ -39,10 +39,10 @@ const api = {
         });
     },
 
-    register(username, password) {
+    register(userData) {
         return this.request('/auth/register', {
             method: 'POST',
-            body: { username, password }
+            body: userData
         });
     },
 
@@ -73,5 +73,68 @@ const api = {
 
     getStats() {
         return this.request('/items/stats');
+    },
+
+    getComplexReport() {
+        return this.request('/items/complex-report');
+    },
+
+    getMaxLost() {
+        return this.request('/items/max-lost');
+    },
+
+    getGroupByStats() {
+        return this.request('/items/groupby-stats');
+    },
+
+    getMinLost() {
+        return this.request('/items/min-lost');
+    },
+
+    getCountByStatus() {
+        return this.request('/items/count-by-status');
+    },
+
+    getAvgItemsPerUser() {
+        return this.request('/items/avg-items-per-user');
+    },
+
+    getDistinctReporters() {
+        return this.request('/items/distinct-reporters');
+    },
+
+    getSumByCategory() {
+        return this.request('/items/sum-by-category');
+    },
+
+    getInnerJoinClaims() {
+        return this.request('/items/inner-join-claims');
+    },
+
+    getLeftJoinUsers() {
+        return this.request('/items/left-join-users');
+    },
+
+    getStatsByMonth(month, year = '') {
+        const query = year ? `?year=${year}` : '';
+        return this.request(`/items/month/${month}${query}`);
+    },
+
+    submitClaim(item_id, message) {
+        return this.request('/claims', {
+            method: 'POST',
+            body: { item_id, message }
+        });
+    },
+
+    getClaimsForItem(item_id) {
+        return this.request(`/claims/item/${item_id}`);
+    },
+
+    updateClaimStatus(claim_id, status) {
+        return this.request(`/claims/${claim_id}/status`, {
+            method: 'PUT',
+            body: { status }
+        });
     }
 };

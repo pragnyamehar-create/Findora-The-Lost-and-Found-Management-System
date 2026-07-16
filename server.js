@@ -20,6 +20,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'backend', 'uploads')));
 // Routes
 app.use('/api/auth', require('./backend/routes/authRoutes'));
 app.use('/api/items', require('./backend/routes/itemRoutes'));
+app.use('/api/claims', require('./backend/routes/claimRoutes'));
 
 // Fallback to index.html for SPA behavior
 app.get('*', (req, res) => {

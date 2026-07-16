@@ -9,10 +9,10 @@ const generateToken = (id, username, role) => {
 };
 
 const registerUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, name, usn, phone_number, department } = req.body;
 
     if (!username || !password) {
-        return res.status(400).json({ message: 'Please provide all fields' });
+        return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
     try {
@@ -24,7 +24,10 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const [result] = await db.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
+        const [result] = await db.query(
+            'INSERT INTO users (username, password, name, usn, phone_number, department) VALUES (?, ?, ?, ?, ?, ?)', 
+            [username, hashedPassword, name || null, usn || null, phone_number || null, department || null]
+        );
 
         if (result.insertId) {
             res.status(201).json({
